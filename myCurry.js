@@ -1,10 +1,11 @@
 Function.prototype.curry = function(numArgs) {
+  let numbers = [];
+  const that = this;
   return function _curry(num) {
-    let numbers = [];
-    if (numbers.length === numArgs.length) {
-      this.curry()
+    numbers.push(num);
+    if (numbers.length === numArgs) {
+      return that(...numbers);
     } else {
-      numbers.push(num);
       return _curry;
     }
   }
